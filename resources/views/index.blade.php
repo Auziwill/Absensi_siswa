@@ -46,7 +46,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">SiswaHadir</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -139,7 +139,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar" style="background-color:rgb(8, 99, 173);">
+  <aside id="sidebar" class="sidebar" style="background-color:rgb(149, 201, 243);">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -149,24 +149,28 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-person-badge"></i>
           <span>Data Guru</span>
         </a>
       </li><!-- End Data Guru Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-people"></i>
           <span>Data Siswa</span>
         </a>
       </li><!-- End Data Siswa Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-building"></i>
           <span>Data Kelas</span>
         </a>
       </li><!-- End Data Kelas Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-diagram-3"></i>
@@ -175,7 +179,14 @@
       </li><!-- End Data Jurusan Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="{{url('/register')}}">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('/login')}}">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Login</span>
         </a>

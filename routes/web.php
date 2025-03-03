@@ -11,5 +11,8 @@ Route::get('/dashboard', function () {
 Route::get('/login', function () {
     return view('pages-login');
 });
+Route::get('/register', function () {
+    return view('pages-register');
+});
 
 
