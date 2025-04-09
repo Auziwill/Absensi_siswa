@@ -10,8 +10,9 @@ class CreateAbsensisTable extends Migration
         Schema::create('absensis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('siswa_id')->unsigned();
-            $table->bigInteger('guru_id')->unsigned();
-            $table->date('tanggal');
+            $table->bigInteger('id_guru')->unsigned();
+            $table->date('tanggal_absen');
+            $table->time('jam_absen');
             $table->enum('status', ['hadir', 'tidak hadir', 'izin']);
             $table->text('keterangan')->nullable();
             $table->timestamps();

@@ -39,6 +39,28 @@
 </head>
 
 <body>
+  @if(Auth::user())
+  @if(Auth::user()->role == 'admin')
+  <script>
+    window.location = "{{ route('dashboard.admin') }}";
+  </script>
+  @elseif(Auth::user()->role == 'guru')
+  <script>
+    window.location = "{{ route('dashboard.guru') }}";
+  </script>
+  @elseif(Auth::user()->role == 'siswa')
+  <script>
+    window.location = "{{ route('dashboard.siswa') }}";
+  </script>   
+  @endif
+  
+  @endif
+
+  @if(Session()->has('loginError'))
+  <div class="alert alert-danger" role="alert">
+    {{ Session()->get('loginError') }}
+  </div>
+  @endif
 
   <main>
     <div class="container">
@@ -64,7 +86,8 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form action="{{ route('login') }}" method="POST" class="row g-3 needs-validation" novalidate>
+                    @csrf
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>

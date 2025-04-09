@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nip')->unique();
             $table->string('no_telp'); 
+            $table->enum('jk', ['L', 'P']);
+            $table->string('username', 30);
+            $table->string('password'); 
             $table->string('alamat');
             $table->string('status');
-            $table->string('mata_pelajaran');
             $table->date('tanggal_bergabung'); 
             $table->timestamps();
         });
