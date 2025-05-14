@@ -1,5 +1,5 @@
 @extends('template_admin.layout')
-@section('title', 'Mengedit Data ' . $local->nama)
+@section('title', 'Mengedit Data ' . $lokal->tingkat_kelas)
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 @endsection
@@ -9,7 +9,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Edit Data {{$lokal->nama}}</h5>
+            <h5 class="card-title">Edit Data {{$lokal->tingkat_kelas}}</h5>
 
             <!-- Vertical Form -->
             <form class="row g-3" action="{{route('lokal.update', $lokal->id)}}" method="post" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
                 @method('PUT')
                 <div class="col-12">
                     <label for="tingkat_kelas" class="form-label">Tingkat Kelas</label>
-                    <select name="tingkat_kelas" id="tingkat_kelas" class="form-control" required>
+                    <select name="tingkat_kelas" id="tingkat_kelas" class="form-control" value="{{$lokal->tingkat_kelas}}" required>
                         <option disabled selected value="">Pilih Kelas</option>
                         <option value="X">X</option>
                         <option value="XI">XI</option>
@@ -25,23 +25,17 @@
                         <option value="XIII">XIII</option>
                     </select>
                 </div>
-
-                <div class="col-12">
-                    <label for="kapasitas_siswa" class="form-label">Kapasitas Siswa</label>
-                    <input type="number" name="kapasitas_siswa" id="kapasitas_siswa" class="form-control" placeholder="Masukkan Kapasitas Siswa" required>
-                </div>
-                
                 <div class="col-12">
                     <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
-                    <input type="text" name="tahun_ajaran" id="tahun_ajaran" class="form-control" placeholder="Masukkan Tahun Ajaran (contoh: 2023/2024)" required>
+                    <input type="text" name="tahun_ajaran" id="tahun_ajaran" class="form-control" value="{{$lokal->tahun_ajaran}}" required>
                 </div>
 
                 <div class="col-12">
                     <label for="id_jurusan" class="form-label">Jurusan</label>
-                    <select name="id_jurusan" id="id_jurusan" class="form-control" required>
+                    <select name="id_jurusan" id="id_jurusan" class="form-control" value="{{$lokal->jurusan}}" required>
                         <option disabled selected value="">Pilih Jurusan</option>
                         @foreach($jurusan as $j)
-                        <option value="{{$j['id']}}">{{$j['nama']}}</option>
+                        <option value="{{$j['id']}}">{{$j['tingkat_kelas']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -52,7 +46,7 @@
                         @foreach ($guru as $g)
                         <option value="{{ $g->id }}"
                             @if (in_array($g->id, $guru_terpakai)) disabled @endif>
-                            {{ $g->nama }}
+                            {{ $g->tingkat_kelas }}
                         </option>
                         @endforeach
                     </select>

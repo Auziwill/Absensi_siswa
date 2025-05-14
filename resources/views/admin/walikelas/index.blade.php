@@ -22,20 +22,19 @@
                                 <th>No</th>
                                 <th>Kelas</th>
                                 <th>Nama</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             @foreach($walikelas as $wk)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$wk->nama}}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $wk->tingkat_kelas ?? '-' }}</td> 
+                                <td>{{ $wk->guru->nama ?? 'Guru tidak ditemukan' }}</td> 
                                 <td>
-                                    {{ $wk->guru ? $wk->guru->nama : 'Guru tidak ditemukan' }}
-                                    @if ($wk->guru)
-                                    <a href="{{ route('walikelas.show', $wk->guru->id) }}" class='btn btn-outline-primary btn-sm' style="margin-left: 10px;">
+                                    <a href="{{ route('walikelas.show', $wk->guru->id ?? '') }}" class='btn btn-outline-primary btn-sm'>
                                         <i class='fas fa-eye' title="show"></i>
                                     </a>
-                                    @endif
                                 </td>
                             </tr>
                             @endforeach

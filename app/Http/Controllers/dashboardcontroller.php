@@ -12,13 +12,13 @@ class dashboardcontroller extends Controller
 {
     public function dashboardAdmin()
     {
-        $jumlahSiswa = siswa::count(); // Menghitung jumlah siswa
-        $jumlahGuru = guru::count(); // Menghitung jumlah guru
-        $jumlahLokal = lokal::count(); // Menghitung jumlah lokal
-        $jumlahJurusan = jurusan::count(); // Menghitung jumlah jurusan
+        $jumlahSiswa = siswa::count(); 
+        $jumlahGuru = guru::count(); 
+        $jumlahLokal = lokal::count(); 
+        $jumlahJurusan = jurusan::count(); 
 
         return view('admin.index', [
-            'menu' => 'home',
+            'menu' => 'dashboardAdmin',
             'jumlahSiswa' => $jumlahSiswa,
             'jumlahGuru' => $jumlahGuru,
             'jumlahLokal' => $jumlahLokal,
@@ -27,13 +27,43 @@ class dashboardcontroller extends Controller
     }
     public function dashboardGuru()
     {
-        $jumlahSiswa = siswa::count(); // Menghitung jumlah siswa
-        $jumlahGuru = guru::count(); // Menghitung jumlah guru
-        $jumlahLokal = lokal::count(); // Menghitung jumlah lokal
-        $jumlahJurusan = jurusan::count(); // Menghitung jumlah jurusan
+        $jumlahSiswa = siswa::count(); 
+        $jumlahGuru = guru::count(); 
+        $jumlahLokal = lokal::count(); 
+        $jumlahJurusan = jurusan::count(); 
 
         return view('guru.index', [
             'menu' => 'dashboardGuru',
+            'jumlahSiswa' => $jumlahSiswa,
+            'jumlahGuru' => $jumlahGuru,
+            'jumlahLokal' => $jumlahLokal,
+            'jumlahJurusan' => $jumlahJurusan
+        ]);
+    }
+    public function dashboardSiswa()
+    {
+        $jumlahSiswa = siswa::count(); 
+        $jumlahGuru = guru::count(); 
+        $jumlahLokal = lokal::count(); 
+        $jumlahJurusan = jurusan::count(); 
+
+        return view('siswa.index', [
+            'menu' => 'dashboardSiswa',
+            'jumlahSiswa' => $jumlahSiswa,
+            'jumlahGuru' => $jumlahGuru,
+            'jumlahLokal' => $jumlahLokal,
+            'jumlahJurusan' => $jumlahJurusan
+        ]);
+    }
+    public function dashboardWalikelas()
+    {
+        $jumlahSiswa = siswa::count(); 
+        $jumlahGuru = guru::count(); 
+        $jumlahLokal = lokal::count(); 
+        $jumlahJurusan = jurusan::count(); 
+
+        return view('walikelas.index', [
+            'menu' => 'dashboardWalikelas',
             'jumlahSiswa' => $jumlahSiswa,
             'jumlahGuru' => $jumlahGuru,
             'jumlahLokal' => $jumlahLokal,

@@ -13,7 +13,6 @@ return new class extends Migration
         Schema::create('lokals', function (Blueprint $table) {
             $table->id();
             $table->string('tingkat_kelas'); 
-            $table->string('kapasitas_siswa'); 
             $table->string('tahun_ajaran');  
             $table->bigInteger('id_guru')->unsigned();
             $table->bigInteger('id_jurusan')->unsigned();

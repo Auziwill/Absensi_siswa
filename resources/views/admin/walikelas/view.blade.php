@@ -24,8 +24,8 @@
                     </select>
                 </div>
                 <div class="col-12">
-                    <label for="nohp" class="form-label">Nomor Handphone</label>
-                    <input type="number" class="form-control" id="nohp" name="nohp" value="{{$walikelas->nohp}}" disabled>
+                    <label for="no_telp" class="form-label">Nomor Handphone</label>
+                    <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{$walikelas->no_telp}}" disabled>
                 </div>
 
 

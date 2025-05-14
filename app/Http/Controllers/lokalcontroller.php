@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\guru;
-
+use App\Models\User;
 use App\Models\lokal;
 use App\Models\jurusan;
 use Illuminate\Http\Request;
@@ -49,34 +49,47 @@ class lokalcontroller extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi input
         $validasi = $request->validate([
-            'nama' => 'required', // Angkatan (X, XI, XII, XIII)
+            'tingkat_kelas' => 'required', // Angkatan (X, XI, XII, XIII)
             'id_jurusan' => 'required',
-            'id_guru' => 'required'
+            'id_guru' => 'required',
+            'tahun_ajaran' => 'required'
         ], [
-            'nama.required' => 'Angkatan harus dipilih',
-            'id_jurusan.required' => 'Jurusan harus dipilih',
-            'id_guru.required' => 'Wali kelas harus dipilih'
+            'tingkat_kelas.required' => 'Pilih tingkatan kelas',
+            'id_jurusan.required' => 'Pilih Jurusan',
+            'id_guru.required' => 'Pilih wali kelas',
+            'tahun_ajaran.required' => 'Isi data tahun ajaran'
         ]);
 
         // Ambil nama jurusan berdasarkan id_jurusan
         $jurusan = Jurusan::find($validasi['id_jurusan']);
-
         if (!$jurusan) {
             return back()->withErrors(['id_jurusan' => 'Jurusan tidak ditemukan']);
         }
 
         // Gabungkan angkatan dengan nama jurusan (menggunakan huruf)
-        $nama_kelas = $validasi['nama'] . ' ' . $jurusan->nama;
+        $tingkat_kelas = $validasi['tingkat_kelas'] . ' ' . $jurusan->tingkat;
 
-        // Simpan data ke database
+        // Simpan data ke tabel lokal
         $lokal = new Lokal();
-        $lokal->nama = $nama_kelas;
+        $lokal->tingkat_kelas = $tingkat_kelas;
+        $lokal->tahun_ajaran = $validasi['tahun_ajaran'];
         $lokal->id_jurusan = $validasi['id_jurusan'];
         $lokal->id_guru = $validasi['id_guru'];
         $lokal->save();
 
-        return redirect(route('lokal.index'));
+        // Ubah role di tabel users menjadi "walikelas" berdasarkan id_guru
+        $guru = Guru::find($validasi['id_guru']);
+        if ($guru) {
+            $user = User::find($guru->user_id); // Ambil user berdasarkan user_id di tabel guru
+            if ($user) {
+                $user->role = 'walikelas'; // Ubah role menjadi "walikelas"
+                $user->save(); // Simpan perubahan
+            }
+        }
+
+        return redirect(route('lokal.index'))->with('success', 'Data kelas berhasil disimpan dan role guru diubah menjadi walikelas.');
     }
 
 

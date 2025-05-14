@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('status');
             $table->date('tanggal_bergabung'); 
             $table->timestamps();
+            
         });
     }
 

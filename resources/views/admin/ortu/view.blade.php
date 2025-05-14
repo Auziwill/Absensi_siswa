@@ -18,9 +18,11 @@
                     <input type="text" class="form-control" id="nama" name="nama" value="{{$ortu->nama}}" disabled>
                 </div>
                 <div class="col-12">
-                    <label for="kelas" class="form-label">Kelas Siswa</label>
-                    <select name="id_local" id="id_local" class="form-control" disabled>
-                        <option disabled selected value="{{$ortu->local_id}}">{{ $ortu->local ? $ortu->local->nama : 'Pilih Kelas' }}</option>
+                    <label for="tingkat_kelas" class="form-label">Kelas Siswa</label>
+                    <select name="lokal_id" id="lokal_id" class="form-control" disabled>
+                        <option disabled selected value="{{ $ortu->lokal_id }}">
+                            {{ $ortu->lokal ? $ortu->lokal->tingkat_kelas : 'Data tidak tersedia' }}
+                        </option>
                     </select>
                 </div>
                 <div class="col-12">
@@ -32,8 +34,8 @@
                     <textarea name="alamat_wm" id="alamat_wm" class="form-control" disabled>{{ $ortu->alamat_wm }}</textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp_wm" class="form-label">Nomor Handphone Wali Murid</label>
-                    <input type="number" class="form-control" id="nohp_wm" name="nohp_wm" value="{{$ortu->nohp_wm}}" disabled>
+                    <label for="no_telp_wm" class="form-label">Nomor Handphone Wali Murid</label>
+                    <input type="number" class="form-control" id="no_telp_wm" name="no_telp_wm" value="{{$ortu->no_telp_wm}}" disabled>
                 </div>
                 <br>
                 <div class="text-end">

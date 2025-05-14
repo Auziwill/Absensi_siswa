@@ -37,8 +37,7 @@
                         <thead class="text-center">
                             <tr>
                                 <th>No</th>
-                                <th>Tingkat Kelas</th>
-                                <th>Jurusan</th>
+                                <th>Kelas</th>
                                 <th>Wali Kelas</th>
                                 <th>Aksi</th>
                             </tr>

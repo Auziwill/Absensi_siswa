@@ -26,9 +26,13 @@
                     <input type="text" class="form-control" id="username" name="username" value="{{$siswa->username}}" disabled>
                 </div>
                 <div class="col-12">
-                    <label for="kelas" class="form-label">Kelas</label>
-                    <select name="id_local" id="id_local" class="form-control" disabled>
-                        <option disabled selected value="{{$siswa->local_id}}">{{ $siswa->local ? $siswa->local->nama : 'Pilih Kelas' }}</option>
+                    <label for="tingkat_kelas" class="form-label">Kelas</label>
+                    <select name="lokal_id" id="lokal_id" class="form-control" disabled>
+                        @if($siswa->lokal)
+                        <option disabled selected value="{{ $siswa->lokal_id }}">{{ $siswa->lokal->tingkat_kelas }}</option>
+                        @else
+                        <option disabled selected value="">Kelas Tidak Ditemukan</option>
+                        @endif
                     </select>
                 </div>
                 <div class="col-12">
@@ -42,8 +46,8 @@
                     <textarea name="alamat" id="alamat" class="form-control" disabled>{{ $siswa->alamat }}</textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp" class="form-label">Nomor Handphone</label>
-                    <input type="number" class="form-control" id="nohp" name="nohp" value="{{$siswa->nohp}}" disabled>
+                    <label for="no_telp" class="form-label">Nomor Handphone</label>
+                    <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{$siswa->no_telp}}" disabled>
                 </div>
                 <div class="col-12">
                     <label for="nama_wm" class="form-label">Nama WaliMurid</label>
@@ -54,8 +58,8 @@
                     <textarea name="alamat_wm" id="alamat_wm" class="form-control" disabled>{{ $siswa->alamat_wm }}</textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp_wm" class="form-label">Nomor Handphone WaliMurid</label>
-                    <input type="number" class="form-control" id="nohp_wm" name="nohp_wm" value="{{$siswa->nohp_wm}}" disabled>
+                    <label for="no_telp_wm" class="form-label">Nomor Handphone WaliMurid</label>
+                    <input type="number" class="form-control" id="no_telp_wm" name="no_telp_wm" value="{{$siswa->no_telp_wm}}" disabled>
                 </div>
                 <br>
                 <div class="text-end">

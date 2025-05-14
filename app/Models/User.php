@@ -18,12 +18,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
         'username',
-        'email',
         'password',
-        'role',
+        'level',
     ];
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'user_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,4 +49,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function walikelas()
+    {
+        return $this->hasOne(Guru::class, 'user_id')->where('level', 'walikelas');
+    }
+ public function guru()
+{
+    return $this->hasOne(Guru::class, 'user_id');
+}
+    
 }

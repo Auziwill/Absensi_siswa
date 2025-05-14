@@ -41,8 +41,9 @@
                     <select name="lokal_id" id="lokal_id" class="form-control" required>
                         <option disabled selected value="">Pilih Kelas</option>
                         @foreach($kelas as $k)
-                        <option value="{{$k['id']}}">{{$k['nama']}}</option>
+                        <option value="{{ $k->id }}">{{ $k->tingkat_kelas }}</option>
                         @endforeach
+
                     </select>
                 </div>
                 <div class="col-12">
@@ -58,8 +59,8 @@
                     <textarea name="alamat" id="alamat" class="form-control" placeholder="masukkan alamat" required></textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp" class="form-label">Nomor Handphone</label>
-                    <input type="number" class="form-control" id="nohp" name="nohp" placeholder="masukkan nohp" required>
+                    <label for="no_telp" class="form-label">Nomor Handphone</label>
+                    <input type="number" class="form-control" id="no_telp" name="no_telp" placeholder="masukkan no_telp" required>
                 </div>
                 <div class="col-12">
                     <label for="nama_wm" class="form-label">Nama WaliMurid</label>
@@ -70,8 +71,8 @@
                     <textarea name="alamat_wm" id="alamat_wm" class="form-control" placeholder="masukkan alamat walimurid" required></textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp_wm" class="form-label">Nomor Handphone WaliMurid</label>
-                    <input type="number" class="form-control" id="nohp_wm" name="nohp_wm" placeholder="masukkan nohp walimurid" required>
+                    <label for="no_telp_wm" class="form-label">Nomor Handphone WaliMurid</label>
+                    <input type="number" class="form-control" id="no_telp_wm" name="no_telp_wm" placeholder="masukkan no_telp walimurid" required>
                 </div>
                 <input type="hidden" name="user_id" value="3">
                 <div class="text-end">

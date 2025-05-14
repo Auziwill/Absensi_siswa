@@ -28,6 +28,14 @@ return new class extends Migration
         Schema::table('gurus',function(Blueprint $table){
            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+        Schema::table('pengajuans',function(Blueprint $table){
+           $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
+           $table->foreign('id_guru')->references('id')->on('gurus')->onDelete('cascade');
+        });
+        Schema::table('notifications',function(Blueprint $table){
+           $table->foreign('id_pengajuan')->references('id')->on('pengajuans')->onDelete('cascade');
+           $table->foreign('id_guru')->references('id')->on('gurus')->onDelete('cascade');
+        });
 
     }
 

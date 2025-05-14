@@ -46,7 +46,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$ds->nisn}}</td>
                                 <td>{{$ds->nama}}</td>
-                                <td>{{$ds->lokal->nama}}</td>
+                                <td>{{ $ds->lokal->tingkat_kelas ?? '-' }}</td>
                                 <td>
                                     <div class="action-btns">
                                         <a href="{{ route('siswa.show', $ds->id) }}" class='btn btn-outline-primary btn-sm'><i class='fas fa-eye' title="show"></i></a>

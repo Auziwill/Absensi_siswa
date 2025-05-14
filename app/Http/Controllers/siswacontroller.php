@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\lokal;
 use App\Models\siswa;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class siswacontroller extends Controller
      */
     public function index()
     {
-        $datasiswa = Siswa::all();
+        $datasiswa = Siswa::with('lokal')->get();
         return view('admin.siswa.index', [
             'menu' => 'siswa',
             'title' => 'Data Siswa',
@@ -31,6 +32,7 @@ class siswacontroller extends Controller
             'menu' => 'siswa',
             'title' => 'Tambah Data Siswa',
             'kelas' => $kelas
+            
         ]);
     }
 
@@ -39,6 +41,7 @@ class siswacontroller extends Controller
      */
     public function store(Request $request)
     {
+
         $validasi = $request->validate([
             'nama' => 'required',
             'nisn' => 'required',
@@ -66,6 +69,17 @@ class siswacontroller extends Controller
             'lokal_id.required' => 'Kelas Harus Diisi',
         ]);
 
+        // Insert data ke tabel user
+
+        $user=new User;
+        $user->name = $validasi['nama'];
+        
+        $user->username = $validasi['username'];
+        $user->password = bcrypt($validasi['password']);
+        $user->role = 'siswa';
+        $user->save();
+        //pilih user_id yang baru baru diinputkan
+
         $siswa  = new siswa;
         $siswa->nama = $validasi['nama'];
         $siswa->nisn = $validasi['nisn'];
@@ -78,7 +92,7 @@ class siswacontroller extends Controller
         $siswa->nama_wm = $validasi['nama_wm'];
         $siswa->alamat_wm = $validasi['alamat_wm'];
         $siswa->lokal_id = $validasi['lokal_id'];
-        $siswa->user_id = $validasi['user_id'];
+        $siswa->user_id = $user->id;
         $siswa->save();
         return redirect(route('siswa.index'));
     }

@@ -27,10 +27,6 @@
                     <input type="text" class="form-control" id="username" name="username" placeholder="masukkan username" required>
                 </div>
                 <div class="col-12">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="masukkan email" required>
-                </div>
-                <div class="col-12">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="password" name="password" placeholder="masukkan password" required>

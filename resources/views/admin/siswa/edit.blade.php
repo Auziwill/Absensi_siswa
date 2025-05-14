@@ -30,7 +30,7 @@
                 <div class="col-12">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="password" name="password" value="">
+                        <input type="password" class="form-control" id="password" name="password" value="{{$siswa->password}}">
                         <span class="input-group-text" onclick="togglePassword()">
                             <i id="eyeIcon" class="bi bi-eye"></i>
                         </span>
@@ -39,10 +39,10 @@
 
                 <div class="col-12">
                     <label for="kelas" class="form-label">Kelas</label>
-                    <select name="id_local" id="id_local" class="form-control">
-                        <option disabled selected value="{{$siswa->local_id}}">{{ $siswa->local ? $siswa->local->nama : 'Pilih Kelas' }}</option>
+                    <select name="lokal_id" id="lokal_id" class="form-control">
+                        <option disabled selected value="{{$siswa->lokal_id}}">{{ $siswa->lokal ? $siswa->lokal->tingkat_kelas : 'Pilih Kelas' }}</option>
                         @foreach($kelas as $k)
-                        <option value="{{$k['id']}}">{{$k['nama']}}</option>
+                        <option value="{{$k['id']}}">{{$k['tingkat_kelas']}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -59,8 +59,8 @@
                     <textarea name="alamat" id="alamat" class="form-control">{{$siswa->alamat}}</textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp" class="form-label">Nomor Handphone</label>
-                    <input type="number" class="form-control" id="nohp" name="nohp" value="{{$siswa->nohp}}">
+                    <label for="no_telp" class="form-label">Nomor Handphone</label>
+                    <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{$siswa->no_telp}}">
                 </div>
                 <div class="col-12">
                     <label for="nama_wm" class="form-label">Nama WaliMurid</label>
@@ -71,10 +71,10 @@
                     <textarea name="alamat_wm" id="alamat_wm" class="form-control">{{$siswa->alamat_wm}}</textarea>
                 </div>
                 <div class="col-12">
-                    <label for="nohp_wm" class="form-label">Nomor Handphone WaliMurid</label>
-                    <input type="number" class="form-control" id="nohp_wm" name="nohp_wm" value="{{$siswa->nohp_wm}}">
+                    <label for="no_telp_wm" class="form-label">Nomor Handphone WaliMurid</label>
+                    <input type="number" class="form-control" id="no_telp_wm" name="no_telp_wm" value="{{$siswa->no_telp_wm}}">
                 </div>
-                <input type="hidden" name="id_user" value="3">
+                <input type="hidden" name="user_id" value="3">
                 <div class="text-end">
                     <a href="{{route('siswa.index')}}" class="btn btn-primary">
                         <i class="bi bi-arrow-left"></i> Kembali

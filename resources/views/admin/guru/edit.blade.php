@@ -34,19 +34,20 @@
                 </div>
                 <div class="col-12">
                     <label for="no_telp" class="form-label">Nomor Handphone</label>
-                    <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{$guru->nohp}}">
-                </div>
-                <<div class="col-12">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <textarea name="alamat" id="alamat" class="form-control" placeholder="masukkan alamat" required></textarea>
+                    <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{$guru->no_telp}}">
                 </div>
                 <div class="col-12">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <textarea name="alamat" id="alamat" class="form-control" placeholder="masukkan alamat" required >{{$guru->alamat}}</textarea>
+                </div>
+                    
+                <div class="col-12">
                     <label for="status" class="form-label">Status</label>
-                    <input type="date" class="form-control" id="status" name="status" placeholder="masukkan tanggal bergabung" required>
+                    <input type="text" class="form-control" id="status" name="status" placeholder="masukkan status" value="{{$guru->status}}"></input>
                 </div>
                 <div class="col-12">
                     <label for="tanggal_bergabung" class="form-label">Tanggal Bergabung</label>
-                    <input type="date" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung" placeholder="masukkan tanggal bergabung" required>
+                    <input type="date" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung" placeholder="masukkan tanggal bergabung" value="{{$guru->tanggal_bergabung}}"></input>
                 </div>
 
                 <input type="hidden" name="user_id" value="3">

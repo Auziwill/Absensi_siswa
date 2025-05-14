@@ -6,7 +6,16 @@
 
 @section('konten')
 <div class="col">
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> Ada masalah dengan data yang disimpan.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Tambah Data Kelas</h5>
@@ -25,10 +34,6 @@
                     </select>
                 </div>
 
-            <div class="col-12">
-                <label for="kapasitas_siswa" class="form-label">Kapasitas Siswa</label>
-                <input type="number" name="kapasitas_siswa" id="kapasitas_siswa" class="form-control" placeholder="Masukkan Kapasitas Siswa" required>
-            </div>
             <div class="col-12">
                 <label for="tahun_ajaran" class="form-label">Tahun Ajaran</label>
                 <input type="text" name="tahun_ajaran" id="tahun_ajaran" class="form-control" placeholder="Masukkan Tahun Ajaran (contoh: 2023/2024)" required>

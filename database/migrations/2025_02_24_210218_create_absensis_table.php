@@ -13,7 +13,7 @@ class CreateAbsensisTable extends Migration
             $table->bigInteger('id_guru')->unsigned();
             $table->date('tanggal_absen');
             $table->time('jam_absen');
-            $table->enum('status', ['hadir', 'tidak hadir', 'izin']);
+            $table->enum('status', ['hadir', 'sakit', 'izin', 'alpa']);
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });

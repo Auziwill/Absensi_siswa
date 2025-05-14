@@ -1,11 +1,11 @@
 <?php
-// filepath: /c:/xampp/htdocs/absensi-siswa/app/Models/Guru.php
-
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+
+use App\Models\Absen;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Guru extends Authenticatable
 {
@@ -17,7 +17,7 @@ class Guru extends Authenticatable
         'tanggal_lahir',
         'username',
         'password',
-        'id_user'
+        'user_id',
     ];
 
     protected $hidden = [
@@ -30,4 +30,15 @@ class Guru extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function absens()
+    {
+        return $this->hasMany(Absen::class, 'id_guru');
+    }
+
+    public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
+
 }

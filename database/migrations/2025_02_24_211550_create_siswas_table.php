@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('alamat'); 
             $table->string('no_telp'); // Kolom untuk nomor telepon siswa
-            $table->string('nama_wn'); // Kolom untuk nama orang tua
-            $table->string('alamat_wn'); // Kolom untuk nama orang tua
-            $table->string('no_telp_wn'); // Kolom untuk nama orang tua
+            $table->string('nama_wm'); // Kolom untuk nama orang tua
+            $table->string('alamat_wm'); // Kolom untuk nama orang tua
+            $table->string('no_telp_wm'); // Kolom untuk nama orang tua
             $table->bigInteger('lokal_id')->unsigned(); // Relasi ke tabel lokal
             $table->bigInteger('user_id')->unsigned(); // Relasi ke tabel lokal
             $table->timestamps(); // Kolom created_at dan updated_at

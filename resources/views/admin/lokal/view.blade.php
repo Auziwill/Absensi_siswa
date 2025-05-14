@@ -1,5 +1,5 @@
 @extends('template_admin.layout')
-@section('title', 'Show Data ' . $local->nama)
+@section('title', 'Show Data ' . $lokal->tingkat_kelas)
 
 
 
@@ -8,14 +8,14 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Show Data {{$lokal->nama}}</h5>
+            <h5 class="card-title">Show Data {{$lokal->tingkat_kelas}}</h5>
 
             <!-- Vertical Form -->
             <form>
                 @csrf
                 <div class="col-12">
-                    <label for="nama" class="form-label">Nama Kelas</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{$lokal->nama}}" disabled>
+                    <label for="tingkat_kelas" class="form-label">Tingkat Kelas</label>
+                    <input type="text" class="form-control" id="tingkat_kelas" name="tingkat_kelas" value="{{$lokal->tingkat_kelas}}" disabled>
                 </div>
                 <div class="col-12">
                     <label for="wali_kelas" class="form-label">Wali Kelas</label>
