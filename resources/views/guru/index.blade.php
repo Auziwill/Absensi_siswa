@@ -1,3 +1,10 @@
+@if(auth()->user()->role != 'guru')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif
+
+
 
 @extends('template_guru.layout')
 @section('title', 'Dashboard Guru')
@@ -108,7 +115,6 @@
 </style>
 @endsection
 
-
 <div class="dashboard-container">
     <div class="card">
         <div class="card-header">
@@ -129,4 +135,5 @@
             </div>
         </div>
     </div>
+    
 </div>

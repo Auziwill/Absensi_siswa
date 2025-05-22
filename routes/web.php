@@ -15,19 +15,16 @@ use App\Http\Controllers\pengajuancontroller;
 use App\Http\Controllers\walikelascontroller;
 
 
-
-
 Route::post('/proseslogin', [LoginController::class, 'authentication'])->name('login');
 Route::get('/', [LoginController::class, 'view'])->name('login-view');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 
 Route::fallback(function () {
     return response()->view('template_admin.eror', [], 404);
 });
 
-Route::get('/register', function () {
-    return view('utama.register');
-})->name('register');
 
 Route::middleware('auth')->group(function () {
 Route::get('/latihan', [siswacontroller::class, 'index'])->name('latihan');
@@ -56,6 +53,8 @@ Route::get('absen/{id}/edit', [AbsenController::class, 'edit'])->name('absen.edi
 Route::put('absen/{id}', [AbsenController::class, 'update'])->name('absen.update');
 Route::get('/absen/riwayat', [AbsenController::class, 'riwayat'])->name('absen.riwayat');
 Route::post('/absen/update-status', [absencontroller::class, 'updateStatus'])->name('absen.updateStatus');
+Route::post('/absen/laporan-bulanan', [AbsenController::class, 'laporanBulanan'])->name('absen.laporanBulanan');
+
 
 
 Route::get('/dashboardSiswa', [dashboardcontroller::class, 'dashboardSiswa'])->name('dashboard.siswa');
@@ -64,12 +63,24 @@ Route::resource('pengajuan', pengajuancontroller::class);
 
 
 
+
 Route::get('/dashboardWalikelas', [dashboardcontroller::class, 'dashboardWalikelas'])->name('dashboard.walikelas');
 Route::get('absenWalikelas', [AbsenController::class, 'indexWalikelas'])->name('absenWalikelas.index');
+Route::post('/absenWalikelas/store', [absencontroller::class, 'storeWalikelas'])->name('absenWalikelas.store');
 Route::get('absenWalikelas/create', [AbsenController::class, 'createWalikelas'])->name('absenWalikelas.create');
 Route::post('absenWalikelas/membuat', [AbsenController::class, 'membuat'])->name('absenWalikelas.membuat');
 Route::get('absenWalikelas/{id}/edit', [AbsenController::class, 'editWalikelas'])->name('absenWalikelas.edit');
 Route::put('absenWalikelas/{id}', [AbsenController::class, 'updateWalikelas'])->name('absenWalikelas.update');
 Route::get('absenWalikelas/riwayat', [AbsenController::class, 'riwayatWalikelas'])->name('absenWalikelas.riwayat');
+Route::get('/riwayat-bulanan', [AbsenController::class, 'laporanBulanan'])->name('riwayat.bulanan');
+
+
+Route::get('/validasi', [pengajuancontroller::class, 'index3'])->name('pengajuan.index3');
+Route::put('pengajuan/{id}/updateStatus', [pengajuancontroller::class, 'updateStatus'])->name('pengajuan.updateStatus');
+
+Route::get('ditolak',function(){
+    return view('dilarang');
+})->name('dilarang');
+
 
 });

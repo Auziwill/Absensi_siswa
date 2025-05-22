@@ -1,3 +1,9 @@
+@if(auth()->user()->role != 'admin')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif
+
 @extends('template_admin.layout')
 @section('title', 'Tambah Data Guru')
 @section('css')

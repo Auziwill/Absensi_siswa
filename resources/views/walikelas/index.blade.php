@@ -1,6 +1,11 @@
+@if(auth()->user()->role != 'walikelas')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif
 
 @extends('template_walikelas.layout')
-@section('title', 'Dashboard Guru')
+@section('title', 'Dashboard walikelas')
 @section('css')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <style>
@@ -120,10 +125,10 @@
                  alt="Guru Mengabsen" class="img-fluid">
             <p>Silakan pilih menu di bawah ini untuk melanjutkan tugas Anda.</p>
             <div class="btn-container">
-                <a href="{{ route('absen.riwayat') }}" class="btn btn-secondary btn-lg">
+                <a href="{{ route('absenWalikelas.riwayat') }}" class="btn btn-secondary btn-lg">
                     <i class="fas fa-history"></i> Riwayat Absensi
                 </a>
-                <a href="{{ route('absen.index') }}" class="btn btn-primary btn-lg">
+                <a href="{{ route('absenWalikelas.index') }}" class="btn btn-primary btn-lg">
                     <i class="fas fa-clipboard-list"></i> Mulai Absensi
                 </a>
             </div>

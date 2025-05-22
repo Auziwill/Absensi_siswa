@@ -1,3 +1,8 @@
+@if(auth()->user()->role != 'guru')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif
 @extends('template_guru.layout')
 @section('title', 'Absen Siswa')
 @section('css')
@@ -70,7 +75,12 @@
         <h4 class="card-title">Absensi Siswa</h4>
         <p class="card-text">Silahkan pilih kelas untuk menampilkan data siswa.</p>
     </div>
-
+ @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
     <!-- Form Pilih Kelas -->
     <form method="GET" action="{{ route('absen.create') }}" class="form-inline">
         <label for="kelas" class="form-label mb-0">Pilih Kelas:</label>
@@ -85,8 +95,9 @@
         <button type="submit" class="btn btn-primary">
             <i class="fas fa-search"></i> Tampilkan Siswa
         </button>
+        
     </form>
-
+@if(request()->has('kelas') && $datasiswa->count())
     <!-- Form Absensi -->
     <form method="POST" action="{{ route('absen.updateStatus') }}">
         @csrf
@@ -101,16 +112,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach($datasiswa as $index => $siswa)
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $siswa->nama }}</td>
                         <td>{{ $siswa->nisn }}</td>
                         <td>
+                              @if($siswa->sudah_absen ?? false)
+                            <span class="text-muted">Sudah absen</span>
+                        @else
+
                             <label><input type="radio" name="status[{{ $siswa->id }}]" value="hadir" {{ old("status.$siswa->id") == 'hadir' ? 'checked' : '' }}> Hadir</label>
                             <label><input type="radio" name="status[{{ $siswa->id }}]" value="izin" {{ old("status.$siswa->id") == 'izin' ? 'checked' : '' }}> Izin</label>
                             <label><input type="radio" name="status[{{ $siswa->id }}]" value="sakit" {{ old("status.$siswa->id") == 'sakit' ? 'checked' : '' }}> Sakit</label>
                             <label><input type="radio" name="status[{{ $siswa->id }}]" value="alpa" {{ old("status.$siswa->id") == 'alpa' ? 'checked' : '' }}> Alpa</label>
+                        @endif
                         </td>
                     </tr>
                     @endforeach
@@ -127,26 +144,6 @@
             </button>
         </div>
     </form>
+@endif
 </div>
 
-@section('js')
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.flash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'excel', 'pdf', 'print'
-            ]
-        });
-    });
-</script>
-@endsection

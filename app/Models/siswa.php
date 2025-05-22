@@ -10,7 +10,8 @@ class siswa extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'nisn', 'alamat', 'jk',  'nohp', 'username', 'password', 'nohp_wm', 'nama_wm', 'alamat_wm', 'lokal_id', 'user_id'];
+    protected $fillable = ['nama', 'nisn', 'alamat', 'jk',  'nohp', 'username', 'password', 
+    'nohp_wm', 'nama_wm', 'alamat_wm', 'lokal_id', 'user_id'];
 
 
     public function lokal()
@@ -28,8 +29,9 @@ class siswa extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function absensis()
+    public function absens()
     {
         return $this->hasMany(Absen::class, 'siswa_id');
     }
+
 }

@@ -26,6 +26,54 @@
         color: #666;
     }
 
+    .form-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 220px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+    }
+
+    .button-group {
+        align-self: flex-end;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+
     .icon-check {
         font-size: 50px;
         color: #007bff;
@@ -82,6 +130,14 @@
     .footer strong {
         font-weight: bold;
     }
+
+    .form-inline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
 </style>
 @endsection
 
@@ -94,6 +150,19 @@
             <h3>Hasil Absensi</h3>
             <p class="mb-1">SMKN 1 Karang Baru</p>
 
+            <form action="{{ route('absen.riwayat') }}" method="GET" class="form-inline">
+                <div class="form-group">
+                    <label for="tanggal" class="text-white font-semibold">Filter Tanggal:</label>
+                    <input type="date" name="tanggal" id="tanggal" value="{{ request('tanggal') }}" class="form-control">
+
+                </div>
+
+                <div class="form-group align-self-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-filter"></i> Tampilkan
+                    </button>
+                </div>
+            </form>
             <div class="table-responsive mt-4">
                 <table class="table table-bordered table-hover">
                     <thead>

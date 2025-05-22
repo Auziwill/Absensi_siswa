@@ -36,9 +36,13 @@ class Guru extends Authenticatable
         return $this->hasMany(Absen::class, 'id_guru');
     }
 
-    public function user()
-{
-    return $this->belongsTo(User::class, 'user_id');
-}
+        public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function notifications()
+    {
+        return $this->hasMany(\App\Models\Notification::class, 'id_guru', 'id');
+    }
 
 }

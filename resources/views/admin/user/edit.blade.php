@@ -1,3 +1,8 @@
+@if(auth()->user()->role != 'admin')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif
 @extends('template_admin.layout')
 @section('title', 'Mengedit Data ' . $user->nama)
 @section('css')
@@ -34,9 +39,9 @@
                     <label for="role" class="form-label">Role</label>
                     <select class="form-control" id="role" name="role">
                         <option disabled selected value="">Pilih Role</option>
-                        <option value="admin" @if($user->level == 'admin') selected @endif>Admin</option>
-                        <option value="guru" @if($user->level == 'guru') selected @endif>Guru</option>
-                        <option value="siswa" @if($user->level == 'siswa') selected @endif>Siswa</option>
+                        <option value="admin" @if($user->role == 'admin') selected @endif>Admin</option>
+                        <option value="guru" @if($user->role == 'guru') selected @endif>Guru</option>
+                        <option value="siswa" @if($user->role == 'siswa') selected @endif>Siswa</option>
                     </select>
                 </div>
                 <div class="text-end">

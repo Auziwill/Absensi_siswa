@@ -36,13 +36,13 @@ class usercontroller extends Controller
         $validasi = $request->validate([
             'username' => 'required',
             'password' => 'required',
-            'level' => 'required',
+            'role' => 'required',
 
         ], [
 
             'username.required' => 'Username Harus Diisi',
             'password.required' => 'Password Harus Diisi',
-            'level.required' => 'Role Harus Diisi',
+            'role.required' => 'Role Harus Diisi',
 
         ]);
 
@@ -50,7 +50,7 @@ class usercontroller extends Controller
 
         $user->username = $validasi['username'];
         $user->password = bcrypt($validasi['password']);
-        $user->level = $validasi['level'];
+        $user->role = $validasi['role'];
         $user->save();
         return redirect(route('user.index'));
     }
@@ -84,7 +84,7 @@ $user = user::find($id);
 
             'username' => 'nullable',
             'password' => 'nullable',
-            'level' => 'nullable',
+            'role' => 'nullable',
         ]);
 
         $user = user::find($id);
@@ -93,7 +93,7 @@ $user = user::find($id);
         if ($request->filled('password')) {
             $user->password = bcrypt($validasi['password']);
         }
-        $user->level = $validasi['level'] ?? $user->level;
+        $user->role = $validasi['role'] ?? $user->role;
         $user->save();
         return redirect(route('user.index'));
     }

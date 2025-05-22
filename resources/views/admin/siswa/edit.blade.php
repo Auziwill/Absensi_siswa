@@ -1,3 +1,8 @@
+@if(auth()->user()->role != 'admin')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif
 @extends('template_admin.layout')
 @section('title', 'Mengedit Data ' . $siswa->nama)
 @section('css')

@@ -48,7 +48,7 @@ class LoginController extends Controller
             Auth::logout();
             return back()->with('loginError', 'Role tidak dikenali.');
         } else {
-            return redirect()->back()->with('error', 'Username atau Password Salah');
+            return back()->with('loginError', 'Login Failed, Silahkan cek kembali username dan password anda');
         }
     }
     public function logout(Request $request)
@@ -59,11 +59,5 @@ class LoginController extends Controller
     
         return redirect()->route('login-view');
     }
-    
-    public function loginError()
-    {
-        return back()->with('loginError', 'Login Failed, Silahkan cek kembali username dan password anda');
-    }
-
 
 }

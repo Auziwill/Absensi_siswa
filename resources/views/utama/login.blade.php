@@ -39,6 +39,7 @@
 </head>
 
 <body>
+
   @if(Auth::user())
   @if(Auth::user()->role == 'admin')
   <script>
@@ -53,18 +54,15 @@
     window.location = "{{ route('dashboard.siswa') }}";
   </script>   
   @endif
-  
-  @endif
-
-  @if(Session()->has('loginError'))
-  <div class="alert alert-danger" role="alert">
-    {{ Session()->get('loginError') }}
-  </div>
   @endif
 
   <main>
     <div class="container">
-
+@if(Session()->has('loginError'))
+  <div class="alert alert-danger" role="alert">
+    {{ Session()->get('loginError') }}
+  </div>
+@endif
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
           <div class="row justify-content-center">
@@ -85,6 +83,7 @@
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
+
 
                   <form action="{{ route('login') }}" method="POST" class="row g-3 needs-validation" novalidate>
                     @csrf

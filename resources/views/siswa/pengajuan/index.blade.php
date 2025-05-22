@@ -1,4 +1,8 @@
-
+@if(auth()->user()->role != 'siswa')
+    <script>
+        window.location.href = "{{ route('dilarang') }}";
+    </script>
+@endif 
 @extends('template_siswa.layout')
 @section('title', $title)
 
