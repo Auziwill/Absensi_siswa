@@ -37,7 +37,7 @@
         <li class="nav-item">
             <a class="nav-link {{ $menu == 'lokal' || $menu == 'jurusan' ? '' : 'collapsed' }}" href="{{ route('lokal.index') }}">
                 <i class="bi bi-building"></i>
-                <span>lokal</span>
+                <span>Kelas/Jurusan</span>
             </a>
         </li>
 
